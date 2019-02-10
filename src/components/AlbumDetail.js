@@ -6,7 +6,7 @@ import Button from './Button'
 
 const AlbumDetail = ({album})=>{
   const {title, artist, thumbnail_image, image, url} = album;
-  const {headerContentStyle, thumbnailStyle, thumbnailContainerStyle, headerTextStyle, imageStyle} = styles;
+  const {headerContentStyle, thumbnailStyle, thumbnailContainerStyle, headerTextStyle, imageStyle, textStyle} = styles;
   return (
     <Card>
       <CardSection>
@@ -22,13 +22,24 @@ const AlbumDetail = ({album})=>{
         <Image style={imageStyle} source={{uri:image}}/>
       </CardSection>
       <CardSection>
-        <Button text="Buy Now" onPress={ () => Linking.openURL(url) }/>
+        <Button onPress={ () => Linking.openURL(url) }>
+          <Text style={textStyle}>BUY NOW</Text>
+        </Button>
       </CardSection>
     </Card>
   );
 };
 
 const styles = {
+  textStyle:{
+    alignSelf:'center',
+    color:'#007aff',
+    fontSize: 16,
+    fontWeight: '600',
+    paddingTop:10,
+    paddingBottom:10,
+  },
+
   headerContentStyle: {
     flexDirection: 'column',
     justifyContent:'space-around'
